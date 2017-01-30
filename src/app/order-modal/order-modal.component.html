@@ -1,0 +1,177 @@
+<modal #myModal modalClass="modal-lg">
+    <modal-header>
+        <h1>פרטי הזמנה</h1>
+    </modal-header>
+    <modal-content>
+
+        <div class="form-group row">
+            <div class="form-subheader">פרטי הזמנה</div>
+            <label for="orderId" class="col-md-2 col-lg-2 col-form-label">מס' הזמנה:</label>
+            <div class="col-md-5 col-lg-5">
+                <input type="text" class="form-control" id="orderId" value="{{theOrder.orderId}}" readonly>
+            </div>
+            <label for="orderDate" class="col-md-1 col-lg-1 col-form-label">תאריך:</label>
+            <div class="col-md-4 col-lg-4">
+                <input type="text" class="form-control" id="orderDate" value="{{theOrder.orderDate}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="form-subheader">פרטי המזמין</div>
+            <label for="customerName" class="col-md-2 col-lg-2 col-form-label">שם המזמין:</label>
+            <div class="col-md-5 col-lg-5">
+                <input type="text" class="form-control" id="customerName" value="{{theOrder.customerName}}" readonly>
+            </div>
+            <label for="customerIdNumber" class="col-md-1 col-lg-1 col-form-label">ת.ז: </label>
+            <div class="col-md-4 col-lg-4">
+                <input type="text" class="form-control" id="customerIdNumber" value="{{theOrder.customerIdNumber}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="customerEmail" class="col-md-2 col-lg-2 col-form-label">דוא&quot;ל:</label>
+            <div class="col-md-5 col-lg-5">
+                <input type="text" class="form-control" id="customerEmail" value="{{theOrder.customerEmail}}" readonly>
+            </div>
+            <label for="customerPhone" class="col-md-1 col-lg-1 col-form-label">טלפון: </label>
+            <div class="col-md-4 col-lg-4">
+                <input type="text" class="form-control" id="customerPhone" value="{{theOrder.customerPhone}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="form-subheader"> פרטי המשלוח <span *ngIf="isHandling">- ללא משלוח (איסוף עצמי )*</span> </div>
+            <label for="settlementName" class="col-md-2 col-lg-2 col-form-label">ישוב:</label>
+            <div class="col-md-5 col-lg-5">
+                <input type="text" class="form-control" id="settlementName" value="{{theOrder.settlementName}}" readonly>
+            </div>
+            <label for="houseNumber" class="col-md-1 col-lg-1 col-form-label">בית: </label>
+            <div class="col-md-2 col-lg-2">
+                <input type="text" class="form-control" id="houseNumber" value="{{theOrder.houseNumber}}" readonly>
+            </div>
+            <label for="apartmentsNumber" class="col-md-1 col-lg-1 col-form-label">דירה: </label>
+            <div class="col-md-1 col-lg-1">
+                <input type="text" class="form-control" id="apartmentsNumber" value="{{theOrder.apartmentsNumber}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="streetName" class="col-md-2 col-lg-2 col-form-label">רחוב:</label>
+            <div class="col-md-5 col-lg-5">
+                <input type="text" class="form-control" id="streetName" value="{{theOrder.streetName}}" readonly>
+            </div>
+            <label for="zipCode" class="col-md-1 col-lg-1 col-form-label">מיקוד:</label>
+            <div class="col-md-4 col-lg-4">
+                <input type="text" class="form-control" id="zipCode" value="{{theOrder.zipCode}}" readonly>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="form-subheader">פרטי תשלום</div>
+            <label for="ccOwnerName" class="col-md-2 col-lg-2 col-form-label">שם מלא:</label>
+            <div class="col-md-5 col-lg-5">
+                <input type="text" class="form-control" id="ccOwnerName" value="{{theOrder.ccOwnerName}}" readonly>
+            </div>
+            <label for="ccOwnerPersonId" class="col-md-1 col-lg-1 col-form-label">ת.ז:</label>
+            <div class="col-md-4 col-lg-4">
+                <input type="text" class="form-control" id="ccOwnerPersonId" value="{{theOrder.ccOwnerPersonId}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="ccToken" class="col-md-2 col-lg-2 col-form-label">מס' כרטיס:</label>
+            <div class="col-md-5 col-lg-5">
+                <input type="text" class="form-control" id="ccToken" value="{{theOrder.ccToken}}" readonly>
+            </div>
+            <label for="validMonth" class="col-md-1 col-lg-1 col-form-label">חודש:</label>
+            <div class="col-md-4 col-lg-4">
+                <input type="text" class="form-control" id="validMonth" value="{{theOrder.validMonth}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="paymentsNumber" class="col-md-2 col-lg-2 col-form-label">תשלומים:</label>
+            <div class="col-md-5 col-lg-5">
+                <input type="text" class="form-control" id="paymentsNumber" value="{{theOrder.paymentsNumber}}" readonly>
+            </div>
+            <label for="validYear" class="col-md-1 col-lg-1 col-form-label">שנה:</label>
+            <div class="col-md-4 col-lg-4">
+                <input type="text" class="form-control" id="validYear" value="{{theOrder.validYear}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="form-subheader">פרטי מוצרים</div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+
+                        <th>מק"ט</th>
+                        <th>קוד שיווקי</th>
+                        <th>שם מוצר</th>
+                        <th>מחיר</th>
+                        <th>כמות</th>
+                        <th>לתשלום</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of theOrder.productsList">
+                        <td>{{product.productMakat}}</td>
+                        <td>{{product.featureCode}}</td>
+                        <td>{{product.description}}</td>
+                        <td>{{product.productPrice| currency:'ILS':true:'1.2-2'}}</td>
+                        <td>{{product.quantity}}</td>
+                        <td>{{product.quantity*product.productPrice| currency:'ILS':true:'1.2-2'}}</td>
+                    </tr>
+                    <tr>
+                        <th colspan="5" class="total">עלות משלוח:</th>
+                        <td>{{theOrder.deliveryCost| currency:'ILS':true:'1.2-2'}}</td>
+
+                    </tr>
+                    <tr>
+                        <th colspan="5" class="total bold">סה"כ לתשלום:</th>
+                        <td>{{totalCost| currency:'ILS':true:'1.2-2'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group row">
+            <div class="form-subheader">טפעול</div>
+            <label for="statusCode" class="col-md-2 col-lg-2 col-form-label">עדכון סטטוס:</label>
+            <div class="col-md-4 col-lg-4">
+                <select id="statusCode" [(ngModel)]="theOrder.statusCode" class="form-control">
+                    <option *ngFor="let c of statusesRef" [value]="c.value">{{c.name}}</option>
+                </select>
+            </div>
+            <label for="updateDate" class="col-md-2 col-lg-2 col-form-label">עדכון אחרון:</label>
+            <div class="col-md-4 col-lg-4">
+                <input type="text" class="form-control" id="updateDate" value="{{theOrder.updateDate}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="invoiceNumber" class="col-md-2 col-lg-2 col-form-label">חשבונית:</label>
+            <div class="col-md-4 col-lg-4">
+                <input type="text" class="form-control" id="invoiceNumber" value="{{theOrder.invoiceNumber}}">
+            </div>
+            <label for="statusCodeOld" class="col-md-2 col-lg-2 col-form-label">סטטוס קודם:</label>
+            <div class="col-md-4 col-lg-4">
+                <input type="text" class="form-control" id="statusCodeOld" value="{{oldStatusVal}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2 col-lg-2 col-form-label">
+                <input type="checkbox" class="mce-checkbox " id="deleteCredit" [checked]="theOrder.deleteCredit" (click)="setDeleteCredit($event.target.checked)">
+            </div>
+            <label for="deleteCredit" class="col-md-4 col-lg-4 ">נתוני האשראי נמחקו אוטומטית</label>
+
+            <label for="updatedBy" class="col-md-2 col-lg-2 col-form-label">עודכן ע&quot;י:</label>
+            <div class="col-md-4 col-lg-4">
+                <input type="text" class="form-control" id="updatedBy" value="{{theOrder.updatedBy}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+
+            <label for="annotation" class="col-md-2 col-lg-2 col-form-label">הערות:</label>
+            <div class="col-md-10 col-lg-10">
+                <textarea class="form-control" id="annotation" value="{{theOrder.annotation}}" rows="5"></textarea>
+            </div>
+        </div>
+    </modal-content>
+    <modal-footer>
+        <button class="btn btn-primary" (click)="close()">ביטול</button>
+        <button class="btn btn-primary" (click)="saveOrder()">שמירה</button>
+    </modal-footer>
+</modal>

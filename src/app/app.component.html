@@ -1,0 +1,8 @@
+<h1 class="h1">
+    {{title}}
+</h1>
+<div class="content table">
+    <input #search class="search" type="text" placeholder="חיפוש..." (keyup)="onSearch(search.value)">
+    <ng2-smart-table *ngIf="source" [settings]="settings" [source]="source" (userRowSelect)="orderOpen($event)"></ng2-smart-table>
+    <order-modal></order-modal>
+</div>
