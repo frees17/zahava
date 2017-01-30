@@ -46,7 +46,7 @@ export class OrderModalComponent implements OnInit {
       }
     });
   }
-
+ 
   getStatusName(val: number): string {
     if (val) {
       return this.statusesRef.filter(obj => obj.value == val)[0].name;
